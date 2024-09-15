@@ -222,7 +222,7 @@ class EpubPublication(Publication):
 
         for f in metadata_fields:
             tmp: ET.Element | None = metadata_xml.find(f"dc:{f}", namespaces=namespaces)
-            if tmp is not None:
+            if tmp is not None and tmp.text:
                 self._update(metadata_fields[f], tmp.text)
 
         # Multiple authors
